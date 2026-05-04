@@ -10,10 +10,10 @@ interface TabsProps {
 
 export function Tabs({ onSelect, selectedTab, tabs }: TabsProps) {
   return (
-    <div className={styles.tabs}>
+    <div class名称={styles.tabs}>
       {tabs.map(tab => (
         <button
-          className={cn(styles.tab, selectedTab === tab.id && styles.selected)}
+          class名称={cn(styles.tab, selectedTab === tab.id && styles.selected)}
           key={tab.id}
           onClick={() => onSelect(tab.id)}
         >

@@ -1,16 +1,16 @@
-import { IoSettingsSharp } from 'react-icons/io5/index';
+import { Io设置Sharp } from 'react-icons/io5/index';
 
 import { Item } from '../item';
 
-interface SettingsProps {
+interface 设置Props {
   open: () => void;
 }
 
-export function Settings({ open }: SettingsProps) {
+export function 设置({ open }: 设置Props) {
   return (
     <Item
-      icon={<IoSettingsSharp />}
-      label="Settings"
+      icon={<Io设置Sharp />}
+      label="设置"
       shortcut="Shift + G"
       onClick={open}
     />

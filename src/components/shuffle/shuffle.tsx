@@ -13,7 +13,7 @@ export function Shuffle() {
       <Tooltip content="Shuffle sounds">
         <button
           aria-label="Shuffle sounds"
-          className={styles.button}
+          class名称={styles.button}
           onClick={shuffle}
         >
           <BiShuffle />

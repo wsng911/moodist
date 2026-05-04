@@ -1,28 +1,28 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { FaUndo, FaPlay, FaPause } from 'react-icons/fa/index';
-import { IoMdSettings } from 'react-icons/io/index';
+import { FaUndo, Fa播放, Fa暂停 } from 'react-icons/fa/index';
+import { IoMd设置 } from 'react-icons/io/index';
 
 import { Modal } from '@/components/modal';
 import { Button } from '../generics/button';
-import { Timer } from './timer';
+import { 计时器 } from './timer';
 import { Tabs } from './tabs';
 import { Setting } from './setting';
 
 import { useLocalStorage } from '@/hooks/use-local-storage';
 import { useSoundEffect } from '@/hooks/use-sound-effect';
 import { usePomodoroStore } from '@/stores/pomodoro';
-import { useSettingsStore } from '@/stores/settings';
-import { useCloseListener } from '@/hooks/use-close-listener';
+import { use设置Store } from '@/stores/settings';
+import { use关闭Listener } from '@/hooks/use-close-listener';
 
 import styles from './pomodoro.module.css';
 
 interface PomodoroProps {
-  onClose: () => void;
+  on关闭: () => void;
   open: () => void;
   show: boolean;
 }
 
-export function Pomodoro({ onClose, open, show }: PomodoroProps) {
+export function Pomodoro({ on关闭, open, show }: PomodoroProps) {
   const [showSetting, setShowSetting] = useState(false);
 
   const [selectedTab, setSelectedTab] = useState('pomodoro');
@@ -30,11 +30,11 @@ export function Pomodoro({ onClose, open, show }: PomodoroProps) {
   const running = usePomodoroStore(state => state.running);
   const setRunning = usePomodoroStore(state => state.setRunning);
 
-  const [timer, setTimer] = useState(0);
+  const [timer, set计时器] = useState(0);
   const interval = useRef<ReturnType<typeof setInterval> | null>(null);
-  const alarmVolume = useSettingsStore(state => state.alarmVolume);
+  const alarm音量 = use设置Store(state => state.alarm音量);
 
-  const alarm = useSoundEffect('/sounds/alarm.mp3', alarmVolume);
+  const alarm = useSoundEffect('/sounds/alarm.mp3', alarm音量);
 
   const defaultTimes = useMemo(
     () => ({
@@ -65,14 +65,14 @@ export function Pomodoro({ onClose, open, show }: PomodoroProps) {
     [],
   );
 
-  useCloseListener(() => setShowSetting(false));
+  use关闭Listener(() => setShowSetting(false));
 
   useEffect(() => {
     if (running) {
       if (interval.current) clearInterval(interval.current);
 
       interval.current = setInterval(() => {
-        setTimer(prev => prev - 1);
+        set计时器(prev => prev - 1);
       }, 1000);
     } else {
       if (interval.current) clearInterval(interval.current);
@@ -99,7 +99,7 @@ export function Pomodoro({ onClose, open, show }: PomodoroProps) {
     if (interval.current) clearInterval(interval.current);
 
     setRunning(false);
-    setTimer(time);
+    set计时器(time);
   }, [selectedTab, times, setRunning]);
 
   const toggleRunning = () => {
@@ -107,7 +107,7 @@ export function Pomodoro({ onClose, open, show }: PomodoroProps) {
     else if (timer <= 0) {
       const time = times[selectedTab] || 10;
 
-      setTimer(time);
+      set计时器(time);
       setRunning(true);
     } else setRunning(true);
   };
@@ -118,21 +118,21 @@ export function Pomodoro({ onClose, open, show }: PomodoroProps) {
     const time = times[selectedTab] || 10;
 
     setRunning(false);
-    setTimer(time);
+    set计时器(time);
   };
 
   return (
     <>
-      <Modal show={show} onClose={onClose}>
-        <header className={styles.header}>
-          <h2 className={styles.title}>Pomodoro Timer</h2>
+      <Modal show={show} on关闭={on关闭}>
+        <header class名称={styles.header}>
+          <h2 class名称={styles.title}>Pomodoro 计时器</h2>
 
-          <div className={styles.button}>
+          <div class名称={styles.button}>
             <Button
-              icon={<IoMdSettings />}
+              icon={<IoMd设置 />}
               tooltip="Change Times"
               onClick={() => {
-                onClose();
+                on关闭();
                 setShowSetting(true);
               }}
             />
@@ -140,13 +140,13 @@ export function Pomodoro({ onClose, open, show }: PomodoroProps) {
         </header>
 
         <Tabs selectedTab={selectedTab} tabs={tabs} onSelect={setSelectedTab} />
-        <Timer timer={timer} />
+        <计时器 timer={timer} />
 
-        <div className={styles.control}>
-          <p className={styles.completed}>
+        <div class名称={styles.control}>
+          <p class名称={styles.completed}>
             {completions[selectedTab] || 0} completed
           </p>
-          <div className={styles.buttons}>
+          <div class名称={styles.buttons}>
             <Button
               icon={<FaUndo />}
               smallIcon
@@ -154,9 +154,9 @@ export function Pomodoro({ onClose, open, show }: PomodoroProps) {
               onClick={restart}
             />
             <Button
-              icon={running ? <FaPause /> : <FaPlay />}
+              icon={running ? <Fa暂停 /> : <Fa播放 />}
               smallIcon
-              tooltip={running ? 'Pause' : 'Start'}
+              tooltip={running ? '暂停' : 'Start'}
               onClick={toggleRunning}
             />
           </div>
@@ -171,7 +171,7 @@ export function Pomodoro({ onClose, open, show }: PomodoroProps) {
           setTimes(times);
           open();
         }}
-        onClose={() => {
+        on关闭={() => {
           setShowSetting(false);
           open();
         }}

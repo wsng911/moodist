@@ -59,14 +59,14 @@ export function Tooltip({
             <TooltipPrimitive.Content
               align={align}
               asChild
-              className={styles.tooltip}
+              class名称={styles.tooltip}
               collisionPadding={8}
               side={side}
               sideOffset={12}
             >
               <motion.div
                 animate="show"
-                className={styles.tooltip}
+                class名称={styles.tooltip}
                 exit="hidden"
                 initial="hidden"
                 variants={variants}

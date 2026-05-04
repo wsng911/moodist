@@ -3,11 +3,11 @@ import { Modal } from '@/components/modal';
 import styles from './shortcuts.module.css';
 
 interface ShortcutsModalProps {
-  onClose: () => void;
+  on关闭: () => void;
   show: boolean;
 }
 
-export function ShortcutsModal({ onClose, show }: ShortcutsModalProps) {
+export function ShortcutsModal({ on关闭, show }: ShortcutsModalProps) {
   const shortcuts = [
     {
       keys: ['Shift', 'H'],
@@ -15,19 +15,19 @@ export function ShortcutsModal({ onClose, show }: ShortcutsModalProps) {
     },
     {
       keys: ['Shift', 'Alt', 'P'],
-      label: 'Presets',
+      label: '预设',
     },
     {
       keys: ['Shift', 'S'],
-      label: 'Share Sounds',
+      label: 'Share 音效',
     },
     {
       keys: ['Shift', 'Alt', 'T'],
-      label: 'Sleep Timer',
+      label: 'Sleep 计时器',
     },
     {
       keys: ['Shift', 'C'],
-      label: 'Countdown Timer',
+      label: 'Countdown 计时器',
     },
     {
       keys: ['Shift', 'P'],
@@ -39,7 +39,7 @@ export function ShortcutsModal({ onClose, show }: ShortcutsModalProps) {
     },
     {
       keys: ['Shift', 'G'],
-      label: 'Settings',
+      label: '设置',
     },
     {
       keys: ['Shift', 'T'],
@@ -51,18 +51,18 @@ export function ShortcutsModal({ onClose, show }: ShortcutsModalProps) {
     },
     {
       keys: ['Shift', 'Space'],
-      label: 'Toggle Play',
+      label: 'Toggle 播放',
     },
     {
       keys: ['Shift', 'R'],
-      label: 'Unselect All Sounds',
+      label: 'Unselect All 音效',
     },
   ];
 
   return (
-    <Modal show={show} onClose={onClose}>
-      <h1 className={styles.heading}>Keyboard Shortcuts</h1>
-      <div className={styles.shortcuts}>
+    <Modal show={show} on关闭={on关闭}>
+      <h1 class名称={styles.heading}>Keyboard Shortcuts</h1>
+      <div class名称={styles.shortcuts}>
         {shortcuts.map(shortcut => (
           <Row
             key={shortcut.label}
@@ -82,10 +82,10 @@ interface RowProps {
 
 function Row({ keys, label }: RowProps) {
   return (
-    <div className={styles.row}>
-      <p className={styles.label}>{label}</p>
-      <div className={styles.divider} />
-      <div className={styles.keys}>
+    <div class名称={styles.row}>
+      <p class名称={styles.label}>{label}</p>
+      <div class名称={styles.divider} />
+      <div class名称={styles.keys}>
         {keys.map(key => (
           <Key key={`${label}-${key}`}>{key}</Key>
         ))}
@@ -99,5 +99,5 @@ interface KeyProps {
 }
 
 function Key({ children }: KeyProps) {
-  return <div className={styles.key}>{children}</div>;
+  return <div class名称={styles.key}>{children}</div>;
 }

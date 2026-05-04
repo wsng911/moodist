@@ -2,7 +2,7 @@ import * as RadixSlider from '@radix-ui/react-slider';
 import styles from './slider.module.css';
 
 type SliderProps = {
-  className?: string;
+  class名称?: string;
   defaultValue?: number;
   disabled?: boolean;
   max?: number;
@@ -13,7 +13,7 @@ type SliderProps = {
 };
 
 export function Slider({
-  className,
+  class名称,
   defaultValue = 50,
   disabled = false,
   max = 100,
@@ -28,7 +28,7 @@ export function Slider({
 
   return (
     <RadixSlider.Root
-      className={`${styles.sliderRoot} ${className}`}
+      class名称={`${styles.sliderRoot} ${class名称}`}
       defaultValue={[defaultValue]}
       disabled={disabled}
       max={max}
@@ -38,10 +38,10 @@ export function Slider({
       value={value !== undefined ? [value] : undefined}
       onValueChange={handleValueChange}
     >
-      <RadixSlider.Track className={styles.sliderTrack}>
-        <RadixSlider.Range className={styles.sliderRange} />
+      <RadixSlider.Track class名称={styles.sliderTrack}>
+        <RadixSlider.Range class名称={styles.sliderRange} />
       </RadixSlider.Track>
-      <RadixSlider.Thumb className={styles.sliderThumb} />
+      <RadixSlider.Thumb class名称={styles.sliderThumb} />
     </RadixSlider.Root>
   );
 }

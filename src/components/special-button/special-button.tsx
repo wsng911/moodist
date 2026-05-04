@@ -4,20 +4,20 @@ import styles from './special-button.module.css';
 
 interface SpecialButtonProps {
   children: React.ReactNode;
-  className?: string;
+  class名称?: string;
   href: string;
   internal?: boolean;
 }
 
 export function SpecialButton({
   children,
-  className,
+  class名称,
   href,
   internal,
 }: SpecialButtonProps) {
   return (
     <a
-      className={cn(styles.button, className)}
+      class名称={cn(styles.button, class名称)}
       href={href}
       {...(!internal ? { rel: 'noreferrer', target: '_blank' } : {})}
     >

@@ -84,33 +84,33 @@ export function Exercise() {
     return () => clearInterval(interval);
   }, [currentPhase, durations, updatePhase]);
 
-  const [timer, setTimer] = useState(0);
+  const [timer, set计时器] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => setTimer(prev => prev + 1), 1000);
+    const interval = setInterval(() => set计时器(prev => prev + 1), 1000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <>
-      <div className={styles.exercise}>
-        <div className={styles.timer}>
+      <div class名称={styles.exercise}>
+        <div class名称={styles.timer}>
           {padNumber(Math.floor(timer / 60))}:{padNumber(timer % 60)}
         </div>
 
         <motion.div
           animate={currentPhase}
-          className={styles.circle}
+          class名称={styles.circle}
           key={selectedExercise}
           variants={animationVariants}
         />
-        <p className={styles.phase}>{PHASE_LABELS[currentPhase]}</p>
+        <p class名称={styles.phase}>{PHASE_LABELS[currentPhase]}</p>
       </div>
 
-      <div className={styles.selectWrapper}>
+      <div class名称={styles.selectWrapper}>
         <select
-          className={styles.selectBox}
+          class名称={styles.selectBox}
           value={selectedExercise}
           onChange={e => setSelectedExercise(e.target.value as Exercise)}
         >

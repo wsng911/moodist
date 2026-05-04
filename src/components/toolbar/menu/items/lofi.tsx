@@ -10,7 +10,7 @@ export function Lofi({ open }: LofiProps) {
   return (
     <Item
       icon={<IoIosMusicalNote />}
-      label="Lofi Music Player"
+      label="Lofi Music 播放er"
       onClick={open}
     />
   );

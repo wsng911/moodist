@@ -1,1 +1,1 @@
-export { PlayButton } from './play';
+export { 播放Button } from './play';

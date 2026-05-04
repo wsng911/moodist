@@ -1,25 +1,31 @@
-FROM docker.io/node:20-alpine3.18 AS build
+FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm@latest-10
+RUN apk add --no-cache git && \
+    git config --global user.email "dev@example.com" && \
+    git config --global user.name "dev"
 
-# Copy dependency files
-COPY package.json pnpm-lock.yaml ./
+COPY package*.json ./
+RUN npm install
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
-
-# Copy rest of the project
 COPY . .
 
-# Build the app
-RUN pnpm run build
+RUN git init && git add -A && git commit -m "init" || true
 
-FROM docker.io/caddy:latest
+RUN npm run build
 
-COPY ./Caddyfile /etc/caddy/Caddyfile
-COPY --from=build /app/dist /var/www/html
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/.next/standalone ./
+COPY --from=build /app/.next/static ./.next/static
+COPY --from=build /app/public ./public
+
+ENV NODE_ENV=production
+ENV PORT=8080
 
 EXPOSE 8080
+
+CMD ["node", "server.js"]

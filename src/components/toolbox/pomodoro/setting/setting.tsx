@@ -6,12 +6,12 @@ import styles from './setting.module.css';
 
 interface SettingProps {
   onChange: (newTimes: Record<string, number>) => void;
-  onClose: () => void;
+  on关闭: () => void;
   show: boolean;
   times: Record<string, number>;
 }
 
-export function Setting({ onChange, onClose, show, times }: SettingProps) {
+export function Setting({ onChange, on关闭, show, times }: SettingProps) {
   const [values, setValues] = useState<Record<string, number | string>>(times);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export function Setting({ onChange, onClose, show, times }: SettingProps) {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handle提交 = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newValues: Record<string, number> = {};
@@ -38,17 +38,17 @@ export function Setting({ onChange, onClose, show, times }: SettingProps) {
     onChange(newValues);
   };
 
-  const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handle取消 = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
-    onClose();
+    on关闭();
   };
 
   return (
-    <Modal lockBody={false} show={show} onClose={onClose}>
-      <h2 className={styles.title}>Change Times</h2>
+    <Modal lockBody={false} show={show} on关闭={on关闭}>
+      <h2 class名称={styles.title}>Change Times</h2>
 
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form class名称={styles.form} on提交={handle提交}>
         <Field
           id="pomodoro"
           label="Pomodoro"
@@ -68,12 +68,12 @@ export function Setting({ onChange, onClose, show, times }: SettingProps) {
           onChange={handleChange('long')}
         />
 
-        <div className={styles.buttons}>
-          <button type="button" onClick={handleCancel}>
-            Cancel
+        <div class名称={styles.buttons}>
+          <button type="button" onClick={handle取消}>
+            取消
           </button>
-          <button className={styles.primary} type="submit">
-            Save
+          <button class名称={styles.primary} type="submit">
+            保存
           </button>
         </div>
       </form>
@@ -90,12 +90,12 @@ interface FieldProps {
 
 function Field({ id, label, onChange, value }: FieldProps) {
   return (
-    <div className={styles.field}>
-      <label className={styles.label} htmlFor={id}>
+    <div class名称={styles.field}>
+      <label class名称={styles.label} htmlFor={id}>
         {label} <span>(minutes)</span>
       </label>
       <input
-        className={styles.input}
+        class名称={styles.input}
         max={120}
         min={1}
         required

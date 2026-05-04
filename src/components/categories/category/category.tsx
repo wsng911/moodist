@@ -1,4 +1,4 @@
-import { Sounds } from '@/components/sounds';
+import { 音效 } from '@/components/sounds';
 
 import styles from './category.module.css';
 
@@ -16,17 +16,17 @@ export function Category({
   title,
 }: CategoryProps) {
   return (
-    <div className={styles.category} id={`category-${id}`}>
-      <div className={styles.iconContainer}>
-        <div className={styles.tail} />
-        <div aria-hidden="true" className={styles.icon}>
+    <div class名称={styles.category} id={`category-${id}`}>
+      <div class名称={styles.iconContainer}>
+        <div class名称={styles.tail} />
+        <div aria-hidden="true" class名称={styles.icon}>
           {icon}
         </div>
       </div>
 
-      <div className={styles.title}>{title}</div>
+      <div class名称={styles.title}>{title}</div>
 
-      <Sounds functional={functional} id={id} sounds={sounds} />
+      <音效 functional={functional} id={id} sounds={sounds} />
     </div>
   );
 }

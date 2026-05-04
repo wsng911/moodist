@@ -9,11 +9,11 @@ export function Todos() {
   const doneCount = useTodoStore(state => state.doneCount());
 
   return (
-    <div className={styles.todos}>
+    <div class名称={styles.todos}>
       <header>
-        <p className={styles.label}>Your Todos</p>
-        <div className={styles.divider} />
-        <p className={styles.counter}>
+        <p class名称={styles.label}>Your Todos</p>
+        <div class名称={styles.divider} />
+        <p class名称={styles.counter}>
           {doneCount} / {todos.length}
         </p>
       </header>
@@ -30,7 +30,7 @@ export function Todos() {
           ))}
         </>
       ) : (
-        <p className={styles.empty}>You don&apos;t have any todos.</p>
+        <p class名称={styles.empty}>You don&apos;t have any todos.</p>
       )}
     </div>
   );

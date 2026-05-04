@@ -53,7 +53,7 @@ export function CipherText({ interval = 50, text }: CipherTextProps) {
   }
 
   return (
-    <span className="text-white">
+    <span class名称="text-white">
       {outputText}
       {remainder}
     </span>

@@ -20,7 +20,7 @@ export function Reverse({ time }: ReverseProps) {
   const formattedSeconds = padNumber(seconds);
 
   return (
-    <div className={styles.reverse}>
+    <div class名称={styles.reverse}>
       - {formattedHours}:{formattedMinutes}:{formattedSeconds}
     </div>
   );

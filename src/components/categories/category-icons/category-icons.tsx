@@ -14,9 +14,9 @@ export default function CategoryIcons() {
 
   return (
     <Container>
-      <div className={styles.wrapper}>
-        <h3 className={styles.title}>Categories</h3>
-        <div className={styles.categoryIconsWrapper}>
+      <div class名称={styles.wrapper}>
+        <h3 class名称={styles.title}>Categories</h3>
+        <div class名称={styles.categoryIconsWrapper}>
           <Tooltip.Provider delayDuration={0}>
             {categories.map(category => {
               return (
@@ -26,7 +26,7 @@ export default function CategoryIcons() {
                   placement="bottom"
                 >
                   <button
-                    className={styles.icon}
+                    class名称={styles.icon}
                     onClick={() => goto(category.id)}
                   >
                     {category.icon}

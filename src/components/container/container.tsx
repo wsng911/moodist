@@ -4,22 +4,22 @@ import styles from './container.module.css';
 
 interface ContainerProps {
   children: React.ReactNode;
-  className?: string;
+  class名称?: string;
   tight?: boolean;
   wide?: boolean;
 }
 
 export function Container({
   children,
-  className,
+  class名称,
   tight,
   wide,
 }: ContainerProps) {
   return (
     <div
-      className={cn(
+      class名称={cn(
         styles.container,
-        className,
+        class名称,
         tight && styles.tight,
         wide && styles.wide,
       )}

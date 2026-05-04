@@ -14,7 +14,7 @@ type SoundValue = {
 interface SoundStore {
   getFavorites: () => Array<string>;
   history: Record<string, SoundValue> | null;
-  isPlaying: boolean;
+  is播放ing: boolean;
   lock: () => void;
   locked: boolean;
   noSelected: () => boolean;
@@ -23,22 +23,22 @@ interface SoundStore {
   play: () => void;
   restoreHistory: () => void;
   select: (id: string) => void;
-  setVolume: (id: string, volume: number) => void;
+  set音量: (id: string, volume: number) => void;
   shuffle: () => void;
   sounds: Record<string, SoundValue>;
   toggleFavorite: (id: string) => void;
-  togglePlay: () => void;
+  toggle播放: () => void;
   unlock: () => void;
   unselect: (id: string) => void;
   unselectAll: (pushToHistory?: boolean) => void;
 }
 
-function createInitialSounds() {
-  const initialSounds: Record<string, SoundValue> = {};
+function createInitial音效() {
+  const initial音效: Record<string, SoundValue> = {};
 
   soundCategories.categories.forEach(category => {
     category.sounds.forEach(sound => {
-      initialSounds[sound.id] = {
+      initial音效[sound.id] = {
         isFavorite: false,
         isSelected: false,
         volume: 0.5,
@@ -46,7 +46,7 @@ function createInitialSounds() {
     });
   });
 
-  return initialSounds;
+  return initial音效;
 }
 
 export const useSoundStore = create<SoundStore>()(
@@ -61,7 +61,7 @@ export const useSoundStore = create<SoundStore>()(
       },
 
       history: null,
-      isPlaying: false,
+      is播放ing: false,
 
       lock() {
         set({ locked: true });
@@ -76,15 +76,15 @@ export const useSoundStore = create<SoundStore>()(
         return keys.every(key => !sounds[key].isSelected);
       },
 
-      override(newSounds) {
+      override(new音效) {
         get().unselectAll();
 
         const sounds = get().sounds;
 
-        Object.keys(newSounds).forEach(sound => {
+        Object.keys(new音效).forEach(sound => {
           if (sounds[sound]) {
             sounds[sound].isSelected = true;
-            sounds[sound].volume = newSounds[sound];
+            sounds[sound].volume = new音效[sound];
           }
         });
 
@@ -92,11 +92,11 @@ export const useSoundStore = create<SoundStore>()(
       },
 
       pause() {
-        set({ isPlaying: false });
+        set({ is播放ing: false });
       },
 
       play() {
-        set({ isPlaying: true });
+        set({ is播放ing: true });
       },
 
       restoreHistory() {
@@ -117,7 +117,7 @@ export const useSoundStore = create<SoundStore>()(
         });
       },
 
-      setVolume(id, volume) {
+      set音量(id, volume) {
         set({
           sounds: {
             ...get().sounds,
@@ -142,10 +142,10 @@ export const useSoundStore = create<SoundStore>()(
           sounds[id].volume = random(0.2, 1);
         });
 
-        set({ history: null, isPlaying: true, sounds });
+        set({ history: null, is播放ing: true, sounds });
       },
 
-      sounds: createInitialSounds(),
+      sounds: createInitial音效(),
 
       toggleFavorite(id) {
         const sounds = get().sounds;
@@ -160,8 +160,8 @@ export const useSoundStore = create<SoundStore>()(
         });
       },
 
-      togglePlay() {
-        set({ isPlaying: !get().isPlaying });
+      toggle播放() {
+        set({ is播放ing: !get().is播放ing });
       },
 
       unlock() {

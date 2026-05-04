@@ -4,12 +4,12 @@ import { padNumber } from '@/helpers/number';
 
 import styles from './timer.module.css';
 
-interface TimerProps {
+interface 计时器Props {
   reverse: number;
   timer: number;
 }
 
-export function Timer({ reverse, timer }: TimerProps) {
+export function 计时器({ reverse, timer }: 计时器Props) {
   let hours = Math.floor(timer / 3600);
   let minutes = Math.floor((timer % 3600) / 60);
   let seconds = timer % 60;
@@ -23,7 +23,7 @@ export function Timer({ reverse, timer }: TimerProps) {
   const formattedSeconds = padNumber(seconds);
 
   return (
-    <div className={styles.timer}>
+    <div class名称={styles.timer}>
       <Reverse time={reverse} />
       {formattedHours}:{formattedMinutes}:{formattedSeconds}
     </div>

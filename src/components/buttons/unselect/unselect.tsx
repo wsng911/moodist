@@ -53,10 +53,10 @@ export function UnselectButton() {
                   disabled={noSelected && !hasHistory}
                   aria-label={
                     hasHistory
-                      ? 'Restore Unselected Sounds'
-                      : 'Unselect All Sounds'
+                      ? 'Restore Unselected 音效'
+                      : 'Unselect All 音效'
                   }
-                  className={cn(
+                  class名称={cn(
                     styles.unselectButton,
                     noSelected && !hasHistory && styles.disabled,
                   )}

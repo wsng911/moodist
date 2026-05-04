@@ -19,20 +19,20 @@ export function Todo({ done, id, todo }: TodoProps) {
   const editTodo = useTodoStore(state => state.editTodo);
 
   const handleCheck = () => toggleTodo(id);
-  const handleDelete = () => deleteTodo(id);
+  const handle删除 = () => deleteTodo(id);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.checkbox}>
+    <div class名称={styles.wrapper}>
+      <div class名称={styles.checkbox}>
         <Checkbox checked={done} onChange={handleCheck} />
       </div>
       <input
-        className={cn(styles.textbox, done && styles.done)}
+        class名称={cn(styles.textbox, done && styles.done)}
         type="text"
         value={todo}
         onChange={e => editTodo(id, e.target.value)}
       />
-      <button className={styles.delete} onClick={handleDelete}>
+      <button class名称={styles.delete} onClick={handle删除}>
         <FaRegTrashAlt />
       </button>
     </div>

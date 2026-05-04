@@ -12,10 +12,10 @@ export function Snackbar({ message }: SnackbarProps) {
   const variants = mix(fade(), slideY(20, 0));
 
   return (
-    <div className={styles.wrapper}>
+    <div class名称={styles.wrapper}>
       <motion.div
         animate="show"
-        className={styles.snackbar}
+        class名称={styles.snackbar}
         exit="hidden"
         initial="hidden"
         variants={variants}

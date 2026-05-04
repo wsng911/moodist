@@ -1,1 +1,1 @@
-export { Timer } from './timer';
+export { 计时器 } from './timer';

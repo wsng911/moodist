@@ -28,8 +28,8 @@ export function App() {
   const lock = useSoundStore(state => state.lock);
   const unlock = useSoundStore(state => state.unlock);
 
-  const favoriteSounds = useMemo(() => {
-    const favoriteSounds = categories
+  const favorite音效 = useMemo(() => {
+    const favorite音效 = categories
       .map(category => category.sounds)
       .flat()
       .filter(sound => favorites.includes(sound.id));
@@ -38,7 +38,7 @@ export function App() {
      * Reorder based on the order of favorites
      */
     return favorites.map(favorite =>
-      favoriteSounds.find(sound => sound.id === favorite),
+      favorite音效.find(sound => sound.id === favorite),
     );
   }, [favorites, categories]);
 
@@ -74,17 +74,17 @@ export function App() {
   const allCategories = useMemo(() => {
     const favorites = [];
 
-    if (favoriteSounds.length) {
+    if (favorite音效.length) {
       favorites.push({
         icon: <BiSolidHeart />,
         id: 'favorites',
-        sounds: favoriteSounds as Array<Sound>,
+        sounds: favorite音效 as Array<Sound>,
         title: 'Favorites',
       });
     }
 
     return [...favorites, ...categories];
-  }, [favoriteSounds, categories]);
+  }, [favorite音效, categories]);
 
   return (
     <SnackbarProvider>

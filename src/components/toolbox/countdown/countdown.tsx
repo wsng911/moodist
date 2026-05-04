@@ -3,18 +3,18 @@ import { useState, useEffect, useCallback } from 'react';
 import { Modal } from '@/components/modal';
 
 import { useSoundEffect } from '@/hooks/use-sound-effect';
-import { useSettingsStore } from '@/stores/settings';
+import { use设置Store } from '@/stores/settings';
 import { cn } from '@/helpers/styles';
 import { padNumber } from '@/helpers/number';
 
 import styles from './countdown.module.css';
 
 interface CountdownProps {
-  onClose: () => void;
+  on关闭: () => void;
   show: boolean;
 }
 
-export function Countdown({ onClose, show }: CountdownProps) {
+export function Countdown({ on关闭, show }: CountdownProps) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
@@ -22,9 +22,9 @@ export function Countdown({ onClose, show }: CountdownProps) {
   const [initialTime, setInitialTime] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(true);
-  const alarmVolume = useSettingsStore(state => state.alarmVolume);
+  const alarm音量 = use设置Store(state => state.alarm音量);
 
-  const alarm = useSoundEffect('/sounds/alarm.mp3', alarmVolume);
+  const alarm = useSoundEffect('/sounds/alarm.mp3', alarm音量);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -52,13 +52,13 @@ export function Countdown({ onClose, show }: CountdownProps) {
     }
   }, [hours, minutes, seconds]);
 
-  const handleBack = useCallback(() => {
+  const handle返回 = useCallback(() => {
     setIsActive(false);
     setIsFormVisible(true);
     setTimeLeft(0);
   }, []);
 
-  const toggleTimer = useCallback(() => {
+  const toggle计时器 = useCallback(() => {
     setIsActive(prev => !prev);
   }, []);
 
@@ -73,17 +73,17 @@ export function Countdown({ onClose, show }: CountdownProps) {
   const elapsedTime = initialTime - timeLeft;
 
   return (
-    <Modal show={show} onClose={onClose}>
-      <header className={styles.header}>
-        <h2 className={styles.title}>Countdown Timer</h2>
-        <p className={styles.desc}>Super simple countdown timer.</p>
+    <Modal show={show} on关闭={on关闭}>
+      <header class名称={styles.header}>
+        <h2 class名称={styles.title}>Countdown 计时器</h2>
+        <p class名称={styles.desc}>Super simple countdown timer.</p>
       </header>
 
       {isFormVisible ? (
-        <div className={styles.formContainer}>
-          <div className={styles.inputContainer}>
+        <div class名称={styles.formContainer}>
+          <div class名称={styles.inputContainer}>
             <input
-              className={styles.input}
+              class名称={styles.input}
               placeholder="HH"
               type="number"
               value={hours}
@@ -93,7 +93,7 @@ export function Countdown({ onClose, show }: CountdownProps) {
             <span>:</span>
 
             <input
-              className={styles.input}
+              class名称={styles.input}
               placeholder="MM"
               type="number"
               value={minutes}
@@ -105,7 +105,7 @@ export function Countdown({ onClose, show }: CountdownProps) {
             <span>:</span>
 
             <input
-              className={styles.input}
+              class名称={styles.input}
               placeholder="SS"
               type="number"
               value={seconds}
@@ -115,9 +115,9 @@ export function Countdown({ onClose, show }: CountdownProps) {
             />
           </div>
 
-          <div className={styles.buttonContainer}>
+          <div class名称={styles.buttonContainer}>
             <button
-              className={cn(styles.button, styles.primary)}
+              class名称={cn(styles.button, styles.primary)}
               onClick={handleStart}
             >
               Start
@@ -125,22 +125,22 @@ export function Countdown({ onClose, show }: CountdownProps) {
           </div>
         </div>
       ) : (
-        <div className={styles.timerContainer}>
-          <div className={styles.displayTime}>
-            <p className={styles.reverse}>- {formatTime(elapsedTime)}</p>
+        <div class名称={styles.timerContainer}>
+          <div class名称={styles.displayTime}>
+            <p class名称={styles.reverse}>- {formatTime(elapsedTime)}</p>
             <span>{formatTime(timeLeft)}</span>
           </div>
 
-          <div className={styles.buttonContainer}>
-            <button className={styles.button} onClick={handleBack}>
-              Back
+          <div class名称={styles.buttonContainer}>
+            <button class名称={styles.button} onClick={handle返回}>
+              返回
             </button>
 
             <button
-              className={cn(styles.button, styles.primary)}
-              onClick={toggleTimer}
+              class名称={cn(styles.button, styles.primary)}
+              onClick={toggle计时器}
             >
-              {isActive ? 'Pause' : 'Start'}
+              {isActive ? '暂停' : 'Start'}
             </button>
           </div>
         </div>

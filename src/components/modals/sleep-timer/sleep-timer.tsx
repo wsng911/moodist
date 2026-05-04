@@ -1,22 +1,22 @@
 import { useEffect, useState, useRef, useMemo } from 'react';
 
 import { Modal } from '@/components/modal';
-import { Timer } from './timer';
+import { 计时器 } from './timer';
 import { dispatch } from '@/lib/event';
 import { useSoundStore } from '@/stores/sound';
 import { cn } from '@/helpers/styles';
 import { FADE_OUT } from '@/constants/events';
-import { useSleepTimerStore } from '@/stores/sleep-timer';
+import { useSleep计时器Store } from '@/stores/sleep-timer';
 
 import styles from './sleep-timer.module.css';
 
-interface SleepTimerModalProps {
-  onClose: () => void;
+interface Sleep计时器ModalProps {
+  on关闭: () => void;
   show: boolean;
 }
 
-export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
-  const setActive = useSleepTimerStore(state => state.set);
+export function Sleep计时器Modal({ on关闭, show }: Sleep计时器ModalProps) {
+  const setActive = useSleep计时器Store(state => state.set);
   const noSelected = useSoundStore(state => state.noSelected());
 
   const [running, setRunning] = useState(false);
@@ -42,23 +42,23 @@ export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
 
   const timerId = useRef<ReturnType<typeof setInterval>>();
 
-  const isPlaying = useSoundStore(state => state.isPlaying);
+  const is播放ing = useSoundStore(state => state.is播放ing);
   const play = useSoundStore(state => state.play);
   const pause = useSoundStore(state => state.pause);
 
   const handleStart = () => {
     if (timerId.current) clearInterval(timerId.current);
     if (noSelected) return;
-    if (!isPlaying) play();
+    if (!is播放ing) play();
 
     if (totalSeconds > 0) {
       setRunning(true);
 
-      const newTimerId = setInterval(() => {
+      const new计时器Id = setInterval(() => {
         setTimeSpent(prev => prev + 1);
       }, 1000);
 
-      timerId.current = newTimerId;
+      timerId.current = new计时器Id;
     }
   };
 
@@ -82,24 +82,24 @@ export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
     setRunning(false);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handle提交 = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     handleStart();
   };
 
   return (
-    <Modal show={show} onClose={onClose}>
-      <header className={styles.header}>
-        <h2 className={styles.title}>Sleep Timer</h2>
-        <p className={styles.desc}>
+    <Modal show={show} on关闭={on关闭}>
+      <header class名称={styles.header}>
+        <h2 class名称={styles.title}>Sleep 计时器</h2>
+        <p class名称={styles.desc}>
           Stop sounds after a certain amount of time.
         </p>
       </header>
 
-      <form onSubmit={handleSubmit}>
-        <div className={styles.controls}>
-          <div className={styles.inputs}>
+      <form on提交={handle提交}>
+        <div class名称={styles.controls}>
+          <div class名称={styles.inputs}>
             {!running && (
               <Field label="Hours" value={hours} onChange={setHours} />
             )}
@@ -109,12 +109,12 @@ export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
             )}
           </div>
 
-          {running ? <Timer reverse={timeSpent} timer={timeLeft} /> : null}
+          {running ? <计时器 reverse={timeSpent} timer={timeLeft} /> : null}
 
-          <div className={styles.buttons}>
+          <div class名称={styles.buttons}>
             {running && (
               <button
-                className={styles.button}
+                class名称={styles.button}
                 type="button"
                 onClick={handleReset}
               >
@@ -124,7 +124,7 @@ export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
 
             {!running && (
               <button
-                className={cn(styles.button, styles.primary)}
+                class名称={cn(styles.button, styles.primary)}
                 type="submit"
               >
                 Start
@@ -145,12 +145,12 @@ interface FieldProps {
 
 function Field({ label, onChange, value }: FieldProps) {
   return (
-    <div className={styles.field}>
-      <label className={styles.label} htmlFor={label.toLocaleLowerCase()}>
+    <div class名称={styles.field}>
+      <label class名称={styles.label} htmlFor={label.toLocaleLowerCase()}>
         {label}
       </label>
       <input
-        className={styles.input}
+        class名称={styles.input}
         id={label.toLocaleLowerCase()}
         max="59"
         min="0"

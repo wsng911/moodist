@@ -8,7 +8,7 @@ type Motion = {
 };
 
 /**
- * Creates a fade motion object with opacity transition.
+ * 创建s a fade motion object with opacity transition.
  *
  * @returns {Motion} An object containing the hidden and show states for a fade transition.
  */
@@ -20,7 +20,7 @@ export function fade(): Motion {
 }
 
 /**
- * Creates a scale motion object with scaling transition.
+ * 创建s a scale motion object with scaling transition.
  *
  * @param {number} [from=0.85] - The initial scale value for the hidden state.
  * @param {number} [to=1] - The final scale value for the show state.
@@ -34,7 +34,7 @@ export function scale(from = 0.85, to = 1): Motion {
 }
 
 /**
- * Creates a slide motion object with horizontal sliding transition.
+ * 创建s a slide motion object with horizontal sliding transition.
  *
  * @param {number} [from=-10] - The initial x position for the hidden state.
  * @param {number} [to=0] - The final x position for the show state.
@@ -48,7 +48,7 @@ export function slideX(from = -10, to = 0): Motion {
 }
 
 /**
- * Creates a slide motion object with vertical sliding transition.
+ * 创建s a slide motion object with vertical sliding transition.
  *
  * @param {number} [from=-10] - The initial y position for the hidden state.
  * @param {number} [to=0] - The final y position for the show state.

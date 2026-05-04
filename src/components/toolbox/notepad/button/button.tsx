@@ -22,7 +22,7 @@ export function Button({
   return (
     <Tooltip content={tooltip} placement="bottom">
       <button
-        className={cn(
+        class名称={cn(
           styles.button,
           critical && styles.critical,
           recommended && styles.recommended,

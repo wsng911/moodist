@@ -7,7 +7,7 @@ import styles from './lofi.module.css';
 import { padNumber } from '@/helpers/number';
 
 interface LofiProps {
-  onClose: () => void;
+  on关闭: () => void;
   show: boolean;
 }
 
@@ -39,15 +39,15 @@ const videos = [
   },
 ];
 
-export function LofiModal({ onClose, show }: LofiProps) {
+export function LofiModal({ on关闭, show }: LofiProps) {
   const [isAccepted, setIsAccepted] = useState(false);
 
   return (
-    <Modal persist show={show} onClose={onClose}>
-      <h1 className={styles.title}>Lofi Music Player</h1>
+    <Modal persist show={show} on关闭={on关闭}>
+      <h1 class名称={styles.title}>Lofi Music 播放er</h1>
 
       {!isAccepted ? (
-        <div className={styles.notice}>
+        <div class名称={styles.notice}>
           <p>
             This feature plays music using embedded YouTube videos. By
             continuing, you agree to connect to YouTube, which may collect data
@@ -55,10 +55,10 @@ export function LofiModal({ onClose, show }: LofiProps) {
             this data.
           </p>
 
-          <div className={styles.buttons}>
-            <button onClick={onClose}>Cancel</button>
+          <div class名称={styles.buttons}>
+            <button onClick={on关闭}>取消</button>
             <button
-              className={styles.primary}
+              class名称={styles.primary}
               onClick={() => setIsAccepted(true)}
             >
               Continue
@@ -66,15 +66,15 @@ export function LofiModal({ onClose, show }: LofiProps) {
           </div>
         </div>
       ) : (
-        <div className={styles.videos}>
+        <div class名称={styles.videos}>
           {videos.map((video, index) => (
-            <div className={styles.video} key={video.id}>
+            <div class名称={styles.video} key={video.id}>
               <h2>
-                <span className={styles.index}>{padNumber(index + 1, 2)}</span>{' '}
+                <span class名称={styles.index}>{padNumber(index + 1, 2)}</span>{' '}
                 <strong>{video.channel}</strong> <span>/</span> {video.title}
               </h2>
-              <div className={styles.container}>
-                <YouTube iframeClassName={styles.iframe} videoId={video.id} />
+              <div class名称={styles.container}>
+                <YouTube iframeClass名称={styles.iframe} videoId={video.id} />
               </div>
             </div>
           ))}

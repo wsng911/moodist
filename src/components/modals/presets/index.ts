@@ -1,1 +1,1 @@
-export { PresetsModal } from './presets';
+export { 预设Modal } from './presets';

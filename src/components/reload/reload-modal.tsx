@@ -15,17 +15,17 @@ export function ReloadModal() {
   };
 
   return (
-    <Modal show={needRefresh} onClose={close}>
-      <h2 className={styles.title}>New Content</h2>
-      <p className={styles.desc}>
+    <Modal show={needRefresh} on关闭={close}>
+      <h2 class名称={styles.title}>New Content</h2>
+      <p class名称={styles.desc}>
         New content available, click on reload button to update.
       </p>
 
-      <div className={styles.buttons}>
-        <button onClick={close}>Close</button>
+      <div class名称={styles.buttons}>
+        <button onClick={close}>关闭</button>
 
         <button
-          className={styles.primary}
+          class名称={styles.primary}
           onClick={() => updateServiceWorker(true)}
         >
           Reload

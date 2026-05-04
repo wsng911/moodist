@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from 'react';
-import { IoMenu, IoClose } from 'react-icons/io5/index';
+import { IoMenu, Io关闭 } from 'react-icons/io5/index';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { AnimatePresence, motion } from 'motion/react';
@@ -9,10 +9,10 @@ import {
   ShareItem,
   DonateItem,
   SourceItem,
-  SettingsItem,
-  PresetsItem,
+  设置Item,
+  预设Item,
   ShortcutsItem,
-  SleepTimerItem,
+  Sleep计时器Item,
   BreathingExerciseItem,
   PomodoroItem,
   NotepadItem,
@@ -24,10 +24,10 @@ import {
 } from './items';
 import { Divider } from './divider';
 import { ShareLinkModal } from '@/components/modals/share-link';
-import { PresetsModal } from '@/components/modals/presets';
+import { 预设Modal } from '@/components/modals/presets';
 import { ShortcutsModal } from '@/components/modals/shortcuts';
-import { SleepTimerModal } from '@/components/modals/sleep-timer';
-import { SettingsModal } from '@/components/modals/settings';
+import { Sleep计时器Modal } from '@/components/modals/sleep-timer';
+import { 设置Modal } from '@/components/modals/settings';
 import { BreathingExerciseModal } from '@/components/modals/breathing';
 import { BinauralModal } from '@/components/modals/binaural';
 import { IsochronicModal } from '@/components/modals/isochronic';
@@ -38,7 +38,7 @@ import { fade, mix, slideY } from '@/lib/motion';
 import { useSoundStore } from '@/stores/sound';
 
 import styles from './menu.module.css';
-import { useCloseListener } from '@/hooks/use-close-listener';
+import { use关闭Listener } from '@/hooks/use-close-listener';
 import { closeModals } from '@/lib/modal';
 
 export function Menu() {
@@ -59,7 +59,7 @@ export function Menu() {
       settings: false,
       shareLink: false,
       shortcuts: false,
-      sleepTimer: false,
+      sleep计时器: false,
       todo: false,
     }),
     [],
@@ -93,19 +93,19 @@ export function Menu() {
   useHotkeys('shift+c', () => open('countdown'));
   useHotkeys('shift+g', () => open('settings'));
   useHotkeys('shift+s', () => open('shareLink'), { enabled: !noSelected });
-  useHotkeys('shift+alt+t', () => open('sleepTimer'));
+  useHotkeys('shift+alt+t', () => open('sleep计时器'));
 
-  useCloseListener(closeAll);
+  use关闭Listener(closeAll);
 
   const variants = mix(fade(), slideY());
 
   return (
     <>
-      <div className={styles.wrapper}>
+      <div class名称={styles.wrapper}>
         <DropdownMenu.Root open={isOpen} onOpenChange={o => setIsOpen(o)}>
           <DropdownMenu.Trigger asChild>
-            <button aria-label="Menu" className={styles.menuButton}>
-              {isOpen ? <IoClose /> : <IoMenu />}
+            <button aria-label="Menu" class名称={styles.menuButton}>
+              {isOpen ? <Io关闭 /> : <IoMenu />}
             </button>
           </DropdownMenu.Trigger>
 
@@ -121,15 +121,15 @@ export function Menu() {
                 >
                   <motion.div
                     animate="show"
-                    className={styles.menu}
+                    class名称={styles.menu}
                     exit="hidden"
                     initial="hidden"
                     variants={variants}
                   >
-                    <PresetsItem open={() => open('presets')} />
+                    <预设Item open={() => open('presets')} />
                     <ShareItem open={() => open('shareLink')} />
                     <ShuffleItem />
-                    <SleepTimerItem open={() => open('sleepTimer')} />
+                    <Sleep计时器Item open={() => open('sleep计时器')} />
 
                     <Divider />
                     <CountdownItem open={() => open('countdown')} />
@@ -144,7 +144,7 @@ export function Menu() {
                     <LofiItem open={() => open('lofi')} />
 
                     <Divider />
-                    <SettingsItem open={() => open('settings')} />
+                    <设置Item open={() => open('settings')} />
                     <Divider />
                     <ShortcutsItem open={() => open('shortcuts')} />
                     <Divider />
@@ -160,36 +160,36 @@ export function Menu() {
 
       <ShareLinkModal
         show={modals.shareLink}
-        onClose={() => close('shareLink')}
+        on关闭={() => close('shareLink')}
       />
       <BreathingExerciseModal
         show={modals.breathing}
-        onClose={() => close('breathing')}
+        on关闭={() => close('breathing')}
       />
       <ShortcutsModal
         show={modals.shortcuts}
-        onClose={() => close('shortcuts')}
+        on关闭={() => close('shortcuts')}
       />
-      <SettingsModal show={modals.settings} onClose={() => close('settings')} />
+      <设置Modal show={modals.settings} on关闭={() => close('settings')} />
       <Pomodoro
         open={() => open('pomodoro')}
         show={modals.pomodoro}
-        onClose={() => close('pomodoro')}
+        on关闭={() => close('pomodoro')}
       />
-      <Notepad show={modals.notepad} onClose={() => close('notepad')} />
-      <Todo show={modals.todo} onClose={() => close('todo')} />
-      <Countdown show={modals.countdown} onClose={() => close('countdown')} />
-      <PresetsModal show={modals.presets} onClose={() => close('presets')} />
-      <SleepTimerModal
-        show={modals.sleepTimer}
-        onClose={() => close('sleepTimer')}
+      <Notepad show={modals.notepad} on关闭={() => close('notepad')} />
+      <Todo show={modals.todo} on关闭={() => close('todo')} />
+      <Countdown show={modals.countdown} on关闭={() => close('countdown')} />
+      <预设Modal show={modals.presets} on关闭={() => close('presets')} />
+      <Sleep计时器Modal
+        show={modals.sleep计时器}
+        on关闭={() => close('sleep计时器')}
       />
-      <BinauralModal show={modals.binaural} onClose={() => close('binaural')} />
+      <BinauralModal show={modals.binaural} on关闭={() => close('binaural')} />
       <IsochronicModal
         show={modals.isochronic}
-        onClose={() => close('isochronic')}
+        on关闭={() => close('isochronic')}
       />
-      <LofiModal show={modals.lofi} onClose={() => close('lofi')} />
+      <LofiModal show={modals.lofi} on关闭={() => close('lofi')} />
     </>
   );
 }

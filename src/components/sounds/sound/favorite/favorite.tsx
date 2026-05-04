@@ -42,11 +42,11 @@ export function Favorite({ id, label }: FavoriteProps) {
   return (
     <AnimatePresence initial={false} mode="wait">
       <button
-        className={cn(styles.favoriteButton, isFavorite && styles.isFavorite)}
+        class名称={cn(styles.favoriteButton, isFavorite && styles.isFavorite)}
         aria-label={
           isFavorite
-            ? `Remove ${label} Sound from Favorites`
-            : `Add ${label} Sound to Favorites`
+            ? `移除 ${label} Sound from Favorites`
+            : `添加 ${label} Sound to Favorites`
         }
         onKeyDown={handleKeyDown}
         onClick={e => {

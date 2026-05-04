@@ -33,7 +33,7 @@ export function ScrollToTop() {
     <motion.button
       animate={isVisible ? 'show' : 'hidden'}
       aria-label="Scroll to top"
-      className={styles.button}
+      class名称={styles.button}
       exit="hidden"
       initial="hidden"
       variants={variants}

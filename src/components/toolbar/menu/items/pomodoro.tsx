@@ -1,4 +1,4 @@
-import { MdOutlineAvTimer } from 'react-icons/md/index';
+import { MdOutlineAv计时器 } from 'react-icons/md/index';
 
 import { Item } from '../item';
 
@@ -14,7 +14,7 @@ export function Pomodoro({ open }: PomodoroProps) {
   return (
     <Item
       active={running}
-      icon={<MdOutlineAvTimer />}
+      icon={<MdOutlineAv计时器 />}
       label="Pomodoro"
       shortcut="Shift + P"
       onClick={open}

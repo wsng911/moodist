@@ -8,7 +8,7 @@ interface RangeProps {
 }
 
 export function Range({ id, label }: RangeProps) {
-  const setVolume = useSoundStore(state => state.setVolume);
+  const set音量 = useSoundStore(state => state.set音量);
   const volume = useSoundStore(state => state.sounds[id].volume);
   const isSelected = useSoundStore(state => state.sounds[id].isSelected);
   const locked = useSoundStore(state => state.locked);
@@ -17,7 +17,7 @@ export function Range({ id, label }: RangeProps) {
     <input
       aria-label={`${label} sound volume`}
       autoComplete="off"
-      className={styles.range}
+      class名称={styles.range}
       disabled={!isSelected}
       max={100}
       min={0}
@@ -25,7 +25,7 @@ export function Range({ id, label }: RangeProps) {
       value={volume * 100}
       onClick={e => e.stopPropagation()}
       onChange={e =>
-        !locked && isSelected && setVolume(id, Number(e.target.value) / 100)
+        !locked && isSelected && set音量(id, Number(e.target.value) / 100)
       }
     />
   );

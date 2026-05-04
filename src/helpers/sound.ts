@@ -71,7 +71,7 @@ export async function getSilenceDataURL(seconds: number = 60) {
 
   /**
    * - Firefox ignores audio for Media Session without any actual sound in the beginning.
-   * - Add a small value to the end to prevent clipping.
+   * - 添加 a small value to the end to prevent clipping.
    */
   channelData[0] = 0.001;
   channelData[channelData.length - 1] = 0.001;

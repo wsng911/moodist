@@ -27,20 +27,20 @@ export function Item({
   return (
     <DropdownItem asChild onClick={onClick}>
       <Comp
-        className={styles.item}
+        class名称={styles.item}
         disabled={disabled}
         {...(href ? { href, target: '_blank' } : {})}
         aria-label={label}
       >
-        <span className={styles.label}>
-          <span className={styles.icon}>{icon}</span> {label}
-          {active && <div className={styles.active} />}
+        <span class名称={styles.label}>
+          <span class名称={styles.icon}>{icon}</span> {label}
+          {active && <div class名称={styles.active} />}
         </span>
 
-        {shortcut && <span className={styles.shortcut}>{shortcut}</span>}
+        {shortcut && <span class名称={styles.shortcut}>{shortcut}</span>}
 
         {href && (
-          <span className={styles.external}>
+          <span class名称={styles.external}>
             <FiExternalLink />
           </span>
         )}

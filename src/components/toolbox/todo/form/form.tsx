@@ -9,7 +9,7 @@ export function Form() {
 
   const addTodo = useTodoStore(state => state.addTodo);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handle提交 = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!value.trim().length) return;
@@ -19,15 +19,15 @@ export function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className={styles.wrapper}>
+    <form on提交={handle提交}>
+      <div class名称={styles.wrapper}>
         <input
           placeholder="I have to ..."
           type="text"
           value={value}
           onChange={e => setValue(e.target.value)}
         />
-        <button type="submit">Add</button>
+        <button type="submit">添加</button>
       </div>
     </form>
   );

@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { BiPause, BiPlay } from 'react-icons/bi/index';
+import { Bi暂停, Bi播放 } from 'react-icons/bi/index';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import { useSoundStore } from '@/stores/sound';
@@ -8,10 +8,10 @@ import { cn } from '@/helpers/styles';
 
 import styles from './play.module.css';
 
-export function PlayButton() {
-  const isPlaying = useSoundStore(state => state.isPlaying);
+export function 播放Button() {
+  const is播放ing = useSoundStore(state => state.is播放ing);
   const pause = useSoundStore(state => state.pause);
-  const toggle = useSoundStore(state => state.togglePlay);
+  const toggle = useSoundStore(state => state.toggle播放);
   const noSelected = useSoundStore(state => state.noSelected());
   const locked = useSoundStore(state => state.locked);
 
@@ -26,30 +26,30 @@ export function PlayButton() {
   }, [showSnackbar, toggle, noSelected, locked]);
 
   useEffect(() => {
-    if (isPlaying && noSelected) pause();
-  }, [isPlaying, pause, noSelected]);
+    if (is播放ing && noSelected) pause();
+  }, [is播放ing, pause, noSelected]);
 
   useHotkeys('shift+space', handleToggle, {}, [handleToggle]);
 
   return (
     <button
       aria-disabled={noSelected}
-      className={cn(styles.playButton, noSelected && styles.disabled)}
+      class名称={cn(styles.playButton, noSelected && styles.disabled)}
       onClick={handleToggle}
     >
-      {isPlaying ? (
+      {is播放ing ? (
         <>
           <span aria-hidden="true">
-            <BiPause />
+            <Bi暂停 />
           </span>{' '}
-          Pause
+          暂停
         </>
       ) : (
         <>
           <span aria-hidden="true">
-            <BiPlay />
+            <Bi播放 />
           </span>{' '}
-          Play
+          播放
         </>
       )}
     </button>

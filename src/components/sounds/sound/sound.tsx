@@ -6,7 +6,7 @@ import { Favorite } from './favorite';
 
 import { useSound } from '@/hooks/use-sound';
 import { useSoundStore } from '@/stores/sound';
-import { useSettingsStore } from '@/stores/settings';
+import { use设置Store } from '@/stores/settings';
 import { useLoadingStore } from '@/stores/loading';
 import { cn } from '@/helpers/styles';
 
@@ -27,34 +27,34 @@ export const Sound = forwardRef<HTMLDivElement, SoundProps>(function Sound(
   { functional, hidden, icon, id, label, selectHidden, src, unselectHidden },
   ref,
 ) {
-  const isPlaying = useSoundStore(state => state.isPlaying);
+  const is播放ing = useSoundStore(state => state.is播放ing);
   const play = useSoundStore(state => state.play);
   const selectSound = useSoundStore(state => state.select);
   const unselectSound = useSoundStore(state => state.unselect);
-  const setVolume = useSoundStore(state => state.setVolume);
+  const set音量 = useSoundStore(state => state.set音量);
   const isSelected = useSoundStore(state => state.sounds[id].isSelected);
   const locked = useSoundStore(state => state.locked);
 
   const volume = useSoundStore(state => state.sounds[id].volume);
-  const globalVolume = useSettingsStore(state => state.globalVolume);
-  const adjustedVolume = useMemo(
-    () => volume * globalVolume,
-    [volume, globalVolume],
+  const global音量 = use设置Store(state => state.global音量);
+  const adjusted音量 = useMemo(
+    () => volume * global音量,
+    [volume, global音量],
   );
 
   const isLoading = useLoadingStore(state => state.loaders[src]);
 
-  const sound = useSound(src, { loop: true, volume: adjustedVolume });
+  const sound = useSound(src, { loop: true, volume: adjusted音量 });
 
   useEffect(() => {
     if (locked) return;
 
-    if (isSelected && isPlaying && functional) {
+    if (isSelected && is播放ing && functional) {
       sound?.play();
     } else {
       sound?.pause();
     }
-  }, [isSelected, sound, isPlaying, functional, locked]);
+  }, [isSelected, sound, is播放ing, functional, locked]);
 
   useEffect(() => {
     if (hidden && isSelected) selectHidden(label);
@@ -70,8 +70,8 @@ export const Sound = forwardRef<HTMLDivElement, SoundProps>(function Sound(
   const unselect = useCallback(() => {
     if (locked) return;
     unselectSound(id);
-    setVolume(id, 0.5);
-  }, [unselectSound, setVolume, id, locked]);
+    set音量(id, 0.5);
+  }, [unselectSound, set音量, id, locked]);
 
   const toggle = useCallback(() => {
     if (locked) return;
@@ -93,7 +93,7 @@ export const Sound = forwardRef<HTMLDivElement, SoundProps>(function Sound(
       ref={ref}
       role="button"
       tabIndex={0}
-      className={cn(
+      class名称={cn(
         styles.sound,
         isSelected && styles.selected,
         hidden && styles.hidden,
@@ -102,16 +102,16 @@ export const Sound = forwardRef<HTMLDivElement, SoundProps>(function Sound(
       onKeyDown={handleKeyDown}
     >
       <Favorite id={id} label={label} />
-      <div className={styles.icon}>
+      <div class名称={styles.icon}>
         {isLoading ? (
-          <span aria-hidden="true" className={styles.spinner}>
+          <span aria-hidden="true" class名称={styles.spinner}>
             <ImSpinner9 />
           </span>
         ) : (
           <span aria-hidden="true">{icon}</span>
         )}
       </div>
-      <div className={styles.label} id={id}>
+      <div class名称={styles.label} id={id}>
         {label}
       </div>
       <Range id={id} label={label} />

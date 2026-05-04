@@ -8,15 +8,15 @@ import { fade, scale, mix } from '@/lib/motion';
 
 import styles from './sounds.module.css';
 
-import type { Sounds } from '@/data/types';
+import type { 音效 } from '@/data/types';
 
-interface SoundsProps {
+interface 音效Props {
   functional: boolean;
   id: string;
-  sounds: Sounds;
+  sounds: 音效;
 }
 
-export function Sounds({ functional, id, sounds }: SoundsProps) {
+export function 音效({ functional, id, sounds }: 音效Props) {
   const [showAll, setShowAll] = useLocalStorage(`${id}-show-more`, false);
   const [clickedMore, setClickedMore] = useState(false);
 
@@ -68,7 +68,7 @@ export function Sounds({ functional, id, sounds }: SoundsProps) {
 
   return (
     <div>
-      <div className={styles.sounds}>
+      <div class名称={styles.sounds}>
         {sounds.map((sound, index) => (
           <Sound
             key={sound.label}
@@ -90,7 +90,7 @@ export function Sounds({ functional, id, sounds }: SoundsProps) {
       {sounds.length > 6 && (
         <button
           ref={showMoreButton}
-          className={cn(
+          class名称={cn(
             styles.button,
             hasHiddenSelection && !showAll && styles.active,
           )}

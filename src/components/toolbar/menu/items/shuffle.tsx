@@ -12,7 +12,7 @@ export function Shuffle() {
     <Item
       disabled={locked}
       icon={<BiShuffle />}
-      label="Shuffle Sounds"
+      label="Shuffle 音效"
       onClick={shuffle}
     />
   );

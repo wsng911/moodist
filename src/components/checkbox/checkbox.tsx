@@ -5,7 +5,7 @@ import styles from './checkbox.module.css';
 
 type CheckboxInputProps = {
   checked?: boolean;
-  className?: string;
+  class名称?: string;
   defaultChecked?: boolean;
   disabled?: boolean;
   onChange?: (checked: boolean) => void;
@@ -13,7 +13,7 @@ type CheckboxInputProps = {
 
 export function Checkbox({
   checked,
-  className,
+  class名称,
   defaultChecked = false,
   disabled = false,
   onChange,
@@ -25,12 +25,12 @@ export function Checkbox({
   return (
     <RadixCheckbox.Root
       checked={checked}
-      className={`${styles.checkboxRoot} ${className}`}
+      class名称={`${styles.checkboxRoot} ${class名称}`}
       defaultChecked={defaultChecked}
       disabled={disabled}
       onCheckedChange={handleCheckedChange}
     >
-      <RadixCheckbox.Indicator className={styles.checkboxIndicator}>
+      <RadixCheckbox.Indicator class名称={styles.checkboxIndicator}>
         <FaCheck />
       </RadixCheckbox.Indicator>
     </RadixCheckbox.Root>

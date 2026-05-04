@@ -15,11 +15,11 @@ import styles from './notepad.module.css';
 import { Tooltip } from '@/components/tooltip';
 
 interface NotepadProps {
-  onClose: () => void;
+  on关闭: () => void;
   show: boolean;
 }
 
-export function Notepad({ onClose, show }: NotepadProps) {
+export function Notepad({ on关闭, show }: NotepadProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const note = useNoteStore(state => state.note);
@@ -43,14 +43,14 @@ export function Notepad({ onClose, show }: NotepadProps) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     e.stopPropagation();
 
-    if (e.key === 'Escape') onClose();
+    if (e.key === 'Escape') on关闭();
   };
 
   return (
-    <Modal show={show} wide onClose={onClose}>
-      <header className={styles.header}>
-        <h2 className={styles.label}>Your Note</h2>
-        <div className={styles.buttons}>
+    <Modal show={show} wide on关闭={on关闭}>
+      <header class名称={styles.header}>
+        <h2 class名称={styles.label}>Your Note</h2>
+        <div class名称={styles.buttons}>
           <Tooltip.Provider delayDuration={0}>
             <Button
               icon={copying ? <FaCheck /> : <LuCopy />}
@@ -74,7 +74,7 @@ export function Notepad({ onClose, show }: NotepadProps) {
       </header>
 
       <textarea
-        className={styles.textarea}
+        class名称={styles.textarea}
         dir="auto"
         placeholder="What is on your mind?"
         ref={textareaRef}
@@ -84,7 +84,7 @@ export function Notepad({ onClose, show }: NotepadProps) {
         onKeyDown={handleKeyDown}
       />
 
-      <p className={styles.counter}>
+      <p class名称={styles.counter}>
         {characters} character{characters !== 1 && 's'} • {words} word
         {words !== 1 && 's'}
       </p>

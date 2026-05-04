@@ -4,18 +4,18 @@ import { List } from './list';
 
 import styles from './presets.module.css';
 
-interface PresetsModalProps {
-  onClose: () => void;
+interface 预设ModalProps {
+  on关闭: () => void;
   show: boolean;
 }
 
-export function PresetsModal({ onClose, show }: PresetsModalProps) {
+export function 预设Modal({ on关闭, show }: 预设ModalProps) {
   return (
-    <Modal show={show} onClose={onClose}>
-      <h2 className={styles.title}>Presets</h2>
+    <Modal show={show} on关闭={on关闭}>
+      <h2 class名称={styles.title}>预设</h2>
       <New />
-      <div className={styles.divider} />
-      <List close={onClose} />
+      <div class名称={styles.divider} />
+      <List close={on关闭} />
     </Modal>
   );
 }

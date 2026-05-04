@@ -5,12 +5,12 @@ export interface Sound {
   src: string;
 }
 
-export type Sounds = Array<Sound>;
+export type 音效 = Array<Sound>;
 
 export interface Category {
   icon: React.ReactNode;
   id: string;
-  sounds: Sounds;
+  sounds: 音效;
   title: string;
 }
 

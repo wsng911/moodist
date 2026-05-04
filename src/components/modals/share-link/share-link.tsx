@@ -9,11 +9,11 @@ import { useSoundStore } from '@/stores/sound';
 import styles from './share-link.module.css';
 
 interface ShareLinkModalProps {
-  onClose: () => void;
+  on关闭: () => void;
   show: boolean;
 }
 
-export function ShareLinkModal({ onClose, show }: ShareLinkModalProps) {
+export function ShareLinkModal({ on关闭, show }: ShareLinkModalProps) {
   const [isMounted, setIsMounted] = useState(false);
   const sounds = useSoundStore(state => state.sounds);
   const { copy, copying } = useCopy();
@@ -50,13 +50,13 @@ export function ShareLinkModal({ onClose, show }: ShareLinkModalProps) {
   useEffect(() => setIsMounted(true), []);
 
   return (
-    <Modal show={show} onClose={onClose}>
-      <h1 className={styles.heading}>Share your sound selection!</h1>
-      <p className={styles.desc}>
+    <Modal show={show} on关闭={on关闭}>
+      <h1 class名称={styles.heading}>Share your sound selection!</h1>
+      <p class名称={styles.desc}>
         Copy and send the following link to the person you want to share your
         selection with.
       </p>
-      <div className={styles.inputWrapper}>
+      <div class名称={styles.inputWrapper}>
         <input readOnly type="text" value={url} />
         <button onClick={() => copy(url)}>
           {copying ? <IoCheckmark /> : <IoCopyOutline />}

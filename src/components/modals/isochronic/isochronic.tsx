@@ -6,7 +6,7 @@ import { Slider } from '@/components/slider';
 import styles from './isochornic.module.css';
 
 interface IsochronicProps {
-  onClose: () => void;
+  on关闭: () => void;
   show: boolean;
 }
 
@@ -20,18 +20,18 @@ const presets: Preset[] = [
   { baseFrequency: 100, beatFrequency: 2, name: 'Delta (Deep Sleep) 2 Hz' },
   { baseFrequency: 100, beatFrequency: 5, name: 'Theta (Meditation) 5 Hz' },
   { baseFrequency: 100, beatFrequency: 10, name: 'Alpha (Relaxation) 10 Hz' },
-  { baseFrequency: 100, beatFrequency: 20, name: 'Beta (Focus) 20 Hz' },
+  { baseFrequency: 100, beatFrequency: 20, name: 'Beta (专注) 20 Hz' },
   { baseFrequency: 100, beatFrequency: 40, name: 'Gamma (Cognition) 40 Hz' },
-  { baseFrequency: 440, beatFrequency: 10, name: 'Custom' },
+  { baseFrequency: 440, beatFrequency: 10, name: '自定义' },
 ];
 
-export function IsochronicModal({ onClose, show }: IsochronicProps) {
+export function IsochronicModal({ on关闭, show }: IsochronicProps) {
   const [baseFrequency, setBaseFrequency] = useState<number>(440); // Default A4 note
   const [beatFrequency, setBeatFrequency] = useState<number>(10); // Default 10 Hz beat
-  const [volume, setVolume] = useState<number>(0.5); // Default volume at 50%
+  const [volume, set音量] = useState<number>(0.5); // Default volume at 50%
   const [waveform] = useState<OscillatorType>('sine'); // Default waveform
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [selectedPreset, setSelectedPreset] = useState<string>('Custom');
+  const [is播放ing, setIs播放ing] = useState<boolean>(false);
+  const [selectedPreset, setSelectedPreset] = useState<string>('自定义');
 
   const audioContextRef = useRef<AudioContext | null>(null);
   const oscillatorRef = useRef<OscillatorNode | null>(null);
@@ -40,7 +40,7 @@ export function IsochronicModal({ onClose, show }: IsochronicProps) {
   const modulatorRef = useRef<OscillatorNode | null>(null);
 
   const startSound = () => {
-    if (isPlaying) return;
+    if (is播放ing) return;
 
     audioContextRef.current = new window.AudioContext();
     const audioContext = audioContextRef.current;
@@ -84,18 +84,18 @@ export function IsochronicModal({ onClose, show }: IsochronicProps) {
     oscillatorRef.current.start();
     modulatorRef.current.start();
 
-    setIsPlaying(true);
+    setIs播放ing(true);
   };
 
   const stopSound = useCallback(() => {
-    if (!isPlaying) return;
+    if (!is播放ing) return;
 
     oscillatorRef.current?.stop();
     modulatorRef.current?.stop();
     audioContextRef.current?.close();
 
-    setIsPlaying(false);
-  }, [isPlaying]);
+    setIs播放ing(false);
+  }, [is播放ing]);
 
   useEffect(() => {
     // Update gain when volume changes
@@ -128,15 +128,15 @@ export function IsochronicModal({ onClose, show }: IsochronicProps) {
   useEffect(() => {
     // Cleanup when component unmounts
     return () => {
-      if (isPlaying) {
+      if (is播放ing) {
         stopSound();
       }
     };
-  }, [isPlaying, stopSound]);
+  }, [is播放ing, stopSound]);
 
   useEffect(() => {
     // Update frequencies when a preset is selected
-    if (selectedPreset !== 'Custom') {
+    if (selectedPreset !== '自定义') {
       const preset = presets.find(p => p.name === selectedPreset);
       if (preset) {
         setBaseFrequency(preset.baseFrequency);
@@ -149,7 +149,7 @@ export function IsochronicModal({ onClose, show }: IsochronicProps) {
     const selected = e.target.value;
     setSelectedPreset(selected);
 
-    if (selected === 'Custom') {
+    if (selected === '自定义') {
       // Allow user to input custom frequencies
       return;
     }
@@ -162,15 +162,15 @@ export function IsochronicModal({ onClose, show }: IsochronicProps) {
   };
 
   return (
-    <Modal show={show} onClose={onClose}>
-      <header className={styles.header}>
-        <h2 className={styles.title}>Isochronic Tone</h2>
-        <p className={styles.desc}>Isochronic tone generator.</p>
+    <Modal show={show} on关闭={on关闭}>
+      <header class名称={styles.header}>
+        <h2 class名称={styles.title}>Isochronic Tone</h2>
+        <p class名称={styles.desc}>Isochronic tone generator.</p>
       </header>
 
-      <div className={styles.fieldWrapper}>
+      <div class名称={styles.fieldWrapper}>
         <label>
-          Presets:
+          预设:
           <select value={selectedPreset} onChange={handlePresetChange}>
             {presets.map(preset => (
               <option key={preset.name} value={preset.name}>
@@ -180,9 +180,9 @@ export function IsochronicModal({ onClose, show }: IsochronicProps) {
           </select>
         </label>
       </div>
-      {selectedPreset === 'Custom' && (
+      {selectedPreset === '自定义' && (
         <>
-          <div className={styles.fieldWrapper}>
+          <div class名称={styles.fieldWrapper}>
             <label>
               Base Frequency (Hz):
               <input
@@ -197,7 +197,7 @@ export function IsochronicModal({ onClose, show }: IsochronicProps) {
               />
             </label>
           </div>
-          <div className={styles.fieldWrapper}>
+          <div class名称={styles.fieldWrapper}>
             <label>
               Tone Frequency (Hz):
               <input
@@ -212,7 +212,7 @@ export function IsochronicModal({ onClose, show }: IsochronicProps) {
               />
             </label>
           </div>
-          {/* <div className={styles.fieldWrapper}>
+          {/* <div class名称={styles.fieldWrapper}>
             <label>
               Waveform:
               <select
@@ -228,28 +228,28 @@ export function IsochronicModal({ onClose, show }: IsochronicProps) {
           </div> */}
         </>
       )}
-      <div className={styles.fieldWrapper}>
+      <div class名称={styles.fieldWrapper}>
         <label>
-          Volume:
+          音量:
           <Slider
-            className={styles.volume}
+            class名称={styles.volume}
             max={1}
             min={0}
             step={0.01}
             value={volume}
-            onChange={value => setVolume(value)}
+            onChange={value => set音量(value)}
           />
         </label>
       </div>
-      <div className={styles.buttons}>
+      <div class名称={styles.buttons}>
         <button
-          className={styles.primary}
-          disabled={isPlaying}
+          class名称={styles.primary}
+          disabled={is播放ing}
           onClick={startSound}
         >
           Start
         </button>
-        <button disabled={!isPlaying} onClick={stopSound}>
+        <button disabled={!is播放ing} onClick={stopSound}>
           Stop
         </button>
       </div>

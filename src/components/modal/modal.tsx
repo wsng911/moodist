@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { IoClose } from 'react-icons/io5/index';
-import FocusTrap from 'focus-trap-react';
+import { Io关闭 } from 'react-icons/io5/index';
+import 专注Trap from 'focus-trap-react';
 
 import { Portal } from '@/components/portal';
 
@@ -13,7 +13,7 @@ import styles from './modal.module.css';
 interface ModalProps {
   children: React.ReactNode;
   lockBody?: boolean;
-  onClose: () => void;
+  on关闭: () => void;
   persist?: boolean;
   show: boolean;
   wide?: boolean;
@@ -24,7 +24,7 @@ const TRANSITION_DURATION = 300;
 export function Modal({
   children,
   lockBody = true,
-  onClose,
+  on关闭,
   persist = false,
   show,
   wide,
@@ -48,14 +48,14 @@ export function Modal({
   useEffect(() => {
     function keyListener(e: KeyboardEvent) {
       if (show && e.key === 'Escape') {
-        onClose();
+        on关闭();
       }
     }
 
     document.addEventListener('keydown', keyListener);
 
     return () => document.removeEventListener('keydown', keyListener);
-  }, [onClose, show]);
+  }, [on关闭, show]);
 
   const animationProps = persist
     ? {
@@ -68,31 +68,31 @@ export function Modal({
       };
 
   const content = (
-    <FocusTrap active={show}>
+    <专注Trap active={show}>
       <div>
         <motion.div
           {...animationProps}
-          className={styles.overlay}
+          class名称={styles.overlay}
           transition={{ duration: TRANSITION_DURATION / 1000 }}
           variants={variants.overlay}
-          onClick={onClose}
-          onKeyDown={onClose}
+          onClick={on关闭}
+          onKeyDown={on关闭}
         />
-        <div className={styles.modal}>
+        <div class名称={styles.modal}>
           <motion.div
             {...animationProps}
-            className={cn(styles.content, wide && styles.wide)}
+            class名称={cn(styles.content, wide && styles.wide)}
             transition={{ duration: TRANSITION_DURATION / 1000 }}
             variants={variants.modal}
           >
-            <button className={styles.close} onClick={onClose}>
-              <IoClose />
+            <button class名称={styles.close} onClick={on关闭}>
+              <Io关闭 />
             </button>
             {children}
           </motion.div>
         </div>
       </div>
-    </FocusTrap>
+    </专注Trap>
   );
 
   return (

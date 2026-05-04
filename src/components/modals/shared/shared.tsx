@@ -4,7 +4,7 @@ import { Modal } from '@/components/modal';
 
 import { useSoundStore } from '@/stores/sound';
 import { useSnackbar } from '@/contexts/snackbar';
-import { useCloseListener } from '@/hooks/use-close-listener';
+import { use关闭Listener } from '@/hooks/use-close-listener';
 import { cn } from '@/helpers/styles';
 import { sounds } from '@/data/sounds';
 
@@ -15,7 +15,7 @@ export function SharedModal() {
   const showSnackbar = useSnackbar();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [sharedSounds, setSharedSounds] = useState<
+  const [shared音效, setShared音效] = useState<
     Array<{
       id: string;
       label: string;
@@ -24,39 +24,39 @@ export function SharedModal() {
   >([]);
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
+    const searchParams = new URL搜索Params(window.location.search);
     const share = searchParams.get('share');
 
     if (share) {
       try {
         const parsed = JSON.parse(decodeURIComponent(share));
-        const allSounds: Record<string, string> = {};
+        const all音效: Record<string, string> = {};
 
         sounds.categories.forEach(category => {
           category.sounds.forEach(sound => {
-            allSounds[sound.id] = sound.label;
+            all音效[sound.id] = sound.label;
           });
         });
 
-        const _sharedSounds: Array<{
+        const _shared音效: Array<{
           id: string;
           label: string;
           volume: number;
         }> = [];
 
         Object.keys(parsed).forEach(sound => {
-          if (allSounds[sound]) {
-            _sharedSounds.push({
+          if (all音效[sound]) {
+            _shared音效.push({
               id: sound,
-              label: allSounds[sound],
+              label: all音效[sound],
               volume: Number(parsed[sound]),
             });
           }
         });
 
-        if (_sharedSounds.length) {
+        if (_shared音效.length) {
           setIsOpen(true);
-          setSharedSounds(_sharedSounds);
+          setShared音效(_shared音效);
         }
       } catch (error) {
         return;
@@ -67,39 +67,39 @@ export function SharedModal() {
   }, []);
 
   const handleOverride = () => {
-    const newSounds: Record<string, number> = {};
+    const new音效: Record<string, number> = {};
 
-    sharedSounds.forEach(sound => {
-      newSounds[sound.id] = sound.volume;
+    shared音效.forEach(sound => {
+      new音效[sound.id] = sound.volume;
     });
 
-    override(newSounds);
+    override(new音效);
     setIsOpen(false);
     showSnackbar('Done! You can now play the new selection.');
   };
 
-  useCloseListener(() => setIsOpen(false));
+  use关闭Listener(() => setIsOpen(false));
 
   return (
-    <Modal show={isOpen} onClose={() => setIsOpen(false)}>
-      <h1 className={styles.heading}>New sound mix detected!</h1>
-      <p className={styles.desc}>
+    <Modal show={isOpen} on关闭={() => setIsOpen(false)}>
+      <h1 class名称={styles.heading}>New sound mix detected!</h1>
+      <p class名称={styles.desc}>
         Someone has shared the following mix with you. Would you want to
         override your current selection?
       </p>
-      <div className={styles.sounds}>
-        {sharedSounds.map(sound => (
-          <div className={styles.sound} key={sound.id}>
+      <div class名称={styles.sounds}>
+        {shared音效.map(sound => (
+          <div class名称={styles.sound} key={sound.id}>
             {sound.label}
           </div>
         ))}
       </div>
-      <div className={styles.footer}>
-        <button className={cn(styles.button)} onClick={() => setIsOpen(false)}>
-          Cancel
+      <div class名称={styles.footer}>
+        <button class名称={cn(styles.button)} onClick={() => setIsOpen(false)}>
+          取消
         </button>
         <button
-          className={cn(styles.button, styles.primary)}
+          class名称={cn(styles.button, styles.primary)}
           onClick={handleOverride}
         >
           Override

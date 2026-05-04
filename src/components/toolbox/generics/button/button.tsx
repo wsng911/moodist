@@ -23,7 +23,7 @@ export function Button({
     <Tooltip.Provider delayDuration={0}>
       <Tooltip content={tooltip} placement="bottom">
         <button
-          className={cn(styles.button, smallIcon && styles.smallIcon)}
+          class名称={cn(styles.button, smallIcon && styles.smallIcon)}
           disabled={disabled}
           onClick={onClick}
         >

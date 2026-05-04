@@ -36,7 +36,7 @@ export function useSound(
   const setIsLoading = useLoadingStore(state => state.set);
   const transitionToken = useRef(0);
   const fadeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const targetVolume = useRef(options.volume ?? 0.5);
+  const target音量 = useRef(options.volume ?? 0.5);
   const isFadingOut = useRef(false);
 
   const { isBrowser } = useSSR();
@@ -69,10 +69,10 @@ export function useSound(
   }, [sound, options.loop]);
 
   useEffect(() => {
-    targetVolume.current = options.volume ?? 0.5;
+    target音量.current = options.volume ?? 0.5;
 
     if (sound && !isFadingOut.current) {
-      sound.volume(targetVolume.current);
+      sound.volume(target音量.current);
     }
   }, [sound, options.volume]);
 
@@ -99,11 +99,11 @@ export function useSound(
           sound.play();
         }
 
-        const currentVolume = sound.volume();
-        const nextVolume = targetVolume.current;
+        const current音量 = sound.volume();
+        const next音量 = target音量.current;
 
-        if (currentVolume !== nextVolume) {
-          sound.fade(currentVolume, nextVolume, DEFAULT_FADE_DURATION);
+        if (current音量 !== next音量) {
+          sound.fade(current音量, next音量, DEFAULT_FADE_DURATION);
         }
 
         if (typeof cb === 'function') sound.once('end', cb);
@@ -119,7 +119,7 @@ export function useSound(
 
     if (sound) {
       sound.stop();
-      sound.volume(targetVolume.current);
+      sound.volume(target音量.current);
     }
   }, [sound, clearFadeTimeout]);
 
@@ -134,27 +134,27 @@ export function useSound(
 
       if (!sound.playing()) {
         isFadingOut.current = false;
-        sound.volume(targetVolume.current);
+        sound.volume(target音量.current);
         return;
       }
 
-      const currentVolume = sound.volume();
+      const current音量 = sound.volume();
 
-      if (duration <= 0 || currentVolume <= 0) {
+      if (duration <= 0 || current音量 <= 0) {
         sound.pause();
         isFadingOut.current = false;
-        sound.volume(targetVolume.current);
+        sound.volume(target音量.current);
         return;
       }
 
-      sound.fade(currentVolume, 0, duration);
+      sound.fade(current音量, 0, duration);
 
       fadeTimeout.current = setTimeout(() => {
         if (transitionToken.current !== token) return;
 
         sound.pause();
         isFadingOut.current = false;
-        sound.volume(targetVolume.current);
+        sound.volume(target音量.current);
       }, duration);
     },
     [sound, clearFadeTimeout],

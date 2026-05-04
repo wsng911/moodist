@@ -14,7 +14,7 @@ export function closeModals() {
  * @param {() => void} listener - The function to be called when the CLOSE_MODALS event is dispatched.
  * @returns {Function} A function to unsubscribe the listener from the CLOSE_MODALS event.
  */
-export function onCloseModals(listener: () => void) {
+export function on关闭Modals(listener: () => void) {
   const unsubscribe = subscribe(CLOSE_MODALS, listener);
 
   return unsubscribe;

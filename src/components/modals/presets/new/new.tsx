@@ -7,13 +7,13 @@ import { usePresetStore } from '@/stores/preset';
 import styles from './new.module.css';
 
 export function New() {
-  const [name, setName] = useState('');
+  const [name, set名称] = useState('');
 
   const noSelected = useSoundStore(state => state.noSelected());
   const sounds = useSoundStore(state => state.sounds);
   const addPreset = usePresetStore(state => state.addPreset);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handle提交 = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!name || noSelected) return;
@@ -28,30 +28,30 @@ export function New() {
 
     addPreset(name, _sounds);
 
-    setName('');
+    set名称('');
   };
 
   return (
-    <div className={styles.new}>
-      <h3 className={styles.title}>New Preset</h3>
+    <div class名称={styles.new}>
+      <h3 class名称={styles.title}>New Preset</h3>
 
       <form
-        className={cn(styles.form, noSelected && styles.disabled)}
-        onSubmit={handleSubmit}
+        class名称={cn(styles.form, noSelected && styles.disabled)}
+        on提交={handle提交}
       >
         <input
           disabled={noSelected}
-          placeholder="Preset's Name"
+          placeholder="Preset's 名称"
           required
           type="text"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={e => set名称(e.target.value)}
         />
-        <button disabled={noSelected}>Save</button>
+        <button disabled={noSelected}>保存</button>
       </form>
 
       {noSelected && (
-        <p className={styles.noSelected}>
+        <p class名称={styles.noSelected}>
           To make a preset, first select some sounds.
         </p>
       )}

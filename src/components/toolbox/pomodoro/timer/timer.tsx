@@ -2,11 +2,11 @@ import { padNumber } from '@/helpers/number';
 
 import styles from './timer.module.css';
 
-interface TimerProps {
+interface 计时器Props {
   timer: number;
 }
 
-export function Timer({ timer }: TimerProps) {
+export function 计时器({ timer }: 计时器Props) {
   let hours = Math.floor(timer / 3600);
   let minutes = Math.floor((timer % 3600) / 60);
   let seconds = timer % 60;
@@ -20,7 +20,7 @@ export function Timer({ timer }: TimerProps) {
   const formattedSeconds = padNumber(seconds);
 
   return (
-    <div className={styles.timer}>
+    <div class名称={styles.timer}>
       {formattedHours}:{formattedMinutes}:{formattedSeconds}
     </div>
   );

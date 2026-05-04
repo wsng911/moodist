@@ -9,20 +9,20 @@ import { useDarkTheme } from '@/hooks/use-dark-theme';
 
 const metadata: MediaMetadataInit = {
   artist: 'Moodist',
-  title: 'Ambient Sounds for Focus and Calm',
+  title: '环境音 音效 for 专注 and Calm',
 };
 
 export function MediaSessionTrack() {
   const { isBrowser } = useSSR();
   const isDarkTheme = useDarkTheme();
-  const isPlaying = useSoundStore(state => state.isPlaying);
+  const is播放ing = useSoundStore(state => state.is播放ing);
   const play = useSoundStore(state => state.play);
   const pause = useSoundStore(state => state.pause);
   const masterAudioSoundRef = useRef<HTMLAudioElement>(null);
   const artworkURL = isDarkTheme ? '/logo-dark.png' : '/logo-light.png';
 
   useEffect(() => {
-    if (!isBrowser || !isPlaying) return;
+    if (!isBrowser || !is播放ing) return;
 
     navigator.mediaSession.metadata = new MediaMetadata({
       ...metadata,
@@ -34,7 +34,7 @@ export function MediaSessionTrack() {
         },
       ],
     });
-  }, [artworkURL, isBrowser, isDarkTheme, isPlaying]);
+  }, [artworkURL, isBrowser, isDarkTheme, is播放ing]);
 
   const startMasterAudio = useCallback(async () => {
     if (!masterAudioSoundRef.current) return;
@@ -68,12 +68,12 @@ export function MediaSessionTrack() {
   useEffect(() => {
     if (!masterAudioSoundRef.current) return;
 
-    if (isPlaying) {
+    if (is播放ing) {
       startMasterAudio();
     } else {
       stopMasterAudio();
     }
-  }, [isPlaying, startMasterAudio, stopMasterAudio]);
+  }, [is播放ing, startMasterAudio, stopMasterAudio]);
 
   useEffect(() => {
     const masterAudioSound = masterAudioSoundRef.current;

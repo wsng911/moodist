@@ -6,20 +6,20 @@ import styles from './donate.module.css';
 
 export function Donate() {
   return (
-    <div className={styles.donate}>
-      <div className={styles.iconContainer}>
-        <div className={styles.tail} />
-        <div aria-hidden="true" className={styles.icon}>
+    <div class名称={styles.donate}>
+      <div class名称={styles.iconContainer}>
+        <div class名称={styles.tail} />
+        <div aria-hidden="true" class名称={styles.icon}>
           <FaCoffee />
         </div>
       </div>
 
-      <div className={styles.title}>
+      <div class名称={styles.title}>
         <span>Support Me</span>
       </div>
-      <p className={styles.desc}>Help me keep Moodist ad-free.</p>
+      <p class名称={styles.desc}>Help me keep Moodist ad-free.</p>
       <SpecialButton
-        className={styles.button}
+        class名称={styles.button}
         href="https://buymeacoffee.com/remvze"
       >
         Donate Today
